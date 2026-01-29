@@ -1,7 +1,7 @@
 # Name: King
 # Student ID: 23442611
 # Email: kingjj@umich.edu
-# Who or what you worked with on this homework (including generative AI like ChatGPT): 
+# Who or what you worked with on this homework (including generative AI like ChatGPT): Office Hours
 # If you worked with generative AI also add a statement for how you used it.
 # e.g.:
 # Asked ChatGPT hints for debugging and suggesting the general structure of the code
@@ -60,8 +60,30 @@ class CouponDispenser:
         Returns:
             str: message as described above
         """
-        # TODO: Implement per instructions
-        pass
+
+        # first check if box empty
+        if len(self.coupon_cards) == 0:
+            return "The box is empty"
+        
+        # check if name already in roster
+        elif name in self.customer_roster:
+            # reference hw3_instructions.pdf
+            current_name_index = self.customer_roster.index(name)
+            
+            coupon_index = self.issued_indices[current_name_index]
+
+            coupon = self.coupon_cards[coupon_index]
+
+            return f"That name already has a coupon: {coupon}" 
+        
+        
+        # box not empty and name is not in the roster
+        else:
+            # pick a random coupon index
+            random_idx = random.randint(0, len(self.coupon_cards))
+            self.customer_roster.append(name)
+            self.issued_indices.append(random_idx)
+        
 
     def distribute_session(self):
         """
