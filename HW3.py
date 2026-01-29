@@ -1,7 +1,7 @@
 # Name: King
 # Student ID: 23442611
 # Email: kingjj@umich.edu
-# Who or what you worked with on this homework (including generative AI like ChatGPT):
+# Who or what you worked with on this homework (including generative AI like ChatGPT): 
 # If you worked with generative AI also add a statement for how you used it.
 # e.g.:
 # Asked ChatGPT hints for debugging and suggesting the general structure of the code
@@ -35,17 +35,16 @@ class CouponDispenser:
         pass
 
     def __str__(self):
-        """
-        Return a single string with all coupons in coupon_cards joined by pipes ('|').
-        If coupon_cards is empty, return an empty string "".
+        # cc = ["groceries", "electronics", "toys"]
 
-        Returns:
-            str
-        """
+        # "groceries|electronics|toys"
 
-        return 
-        # TODO: Implement per instructions
-        pass
+        if len(self.coupon_cards) == 0:
+            return ""
+
+        else:
+            return '|'.join(self.coupon_cards)
+
 
     def issue_coupon(self, name):
         """
@@ -117,10 +116,10 @@ def main():
     ]
 
     # Uncomment the lines below as you implement each function.
-    # box = CouponDispenser(coupon_cards)
+    box = CouponDispenser(coupon_cards)
+    print(box)
     # box.distribute_session()
     # box.tally_distribution()
-    pass
 
 
 # -----------------------
