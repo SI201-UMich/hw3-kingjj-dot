@@ -47,20 +47,7 @@ class CouponDispenser:
 
 
     def issue_coupon(self, name):
-        """
-        Assign name with a random coupon. If name is already assigned a coupon, return it.
-        If the list coupon_cards is empty, return:
-        "The box is empty."
-
-        Important: Do not use dictionaries in this method.
-
-        Args:
-            name (str): customer name (trimmed, non-empty)
-
-        Returns:
-            str: message as described above
-        """
-
+       
         # first check if box empty
         if len(self.coupon_cards) == 0:
             return "The box is empty"
@@ -83,6 +70,8 @@ class CouponDispenser:
             random_idx = random.randint(0, len(self.coupon_cards))
             self.customer_roster.append(name)
             self.issued_indices.append(random_idx)
+
+            return self.coupon_cards[random_idx]
         
 
     def distribute_session(self):
@@ -99,9 +88,36 @@ class CouponDispenser:
         See the instructions for more details.
 
         Reminder: Use lists only (no dictionaries).
+
         """
-        # TODO: Implement per instructions 
-        pass
+        round_number = 1
+
+        for i in round_number:
+            user_input = input(f"Round {round_number} - Enter a name (or a comma-separated list), or type 'show' or 'exit': ")
+
+            if user_input == 'exit':
+                print('Goodbye!')
+                break
+
+            elif user_input == "show":
+                for idx, name in enumerate(self.customer_roster):
+                    coupon_inx = self.issued_indices[idx]
+                    coupon = self.coupon_cards[coupon_inx]
+                    print(f'{name} : {coupon}' )
+            
+            else:
+
+                pieces = user_input.split(',')
+
+                for i in pieces:
+                    stripped_text = user_input.strip()
+
+
+
+        print('hello')
+    
+
+    
 
     def tally_distribution(self):
         """
